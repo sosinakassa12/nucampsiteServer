@@ -10,7 +10,10 @@ var usersRouter = require('./routes/users');
 const campsiteRouter = require('./routes/campsiteRouter');
 const promotionRouter = require('./routes/promotionRouter');
 const partnerRouter = require('./routes/partnerRouter');
+const uploadRouter = require('./routes/uploadRouter');
+
 const mongoose = require('mongoose');
+
 
 // const url = 'mongodb://127.0.0.1:27017/nucampsite';
 const url = config.mongoUrl;
@@ -42,6 +45,7 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use(passport.initialize());
 
+
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
@@ -50,6 +54,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/campsites', campsiteRouter);
 app.use('/promotions', promotionRouter);
 app.use('/partners', partnerRouter);
+app.use('/imageUpload', uploadRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
